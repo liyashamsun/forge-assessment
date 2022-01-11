@@ -1,0 +1,12 @@
+modules:
+  macro:
+    - key: ts-wordcount-hello-world
+      function: main
+      title: ts-wordcount
+      description: Word Counter Macro for Confluence Cloud
+  function:
+    - key: main
+      handler: index.run
+app:
+  id: ari:cloud:ecosystem::app/71d9cf3e-598b-484f-8791-273acbca56f5
+  name: ts-wordcount-app
