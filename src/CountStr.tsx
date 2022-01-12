@@ -1,37 +1,55 @@
-import React from "react";
-
-interface txtInput{
-    inputString : string;
+interface parameter {
+  txtInput: string;
+  sortResult: string;
+  sortOrder: string;
 }
 
-interface mainTxt{
-    word: string;
-    occurance: number;
+interface mainTxt {
+  word: string;
+  occurance: number;
 }
 
 
-export function countWordFx(str: txtInput){
-    let strWords = str.inputString.split(" ");
-    let strExist: mainTxt[] = [];
+export function countWordFx(str: parameter) {
+  //get value from textarea and split by space
+  let strWords = str.txtInput.split(" ");
 
-    for(let i in strWords){
-        let newWord = strWords[i];
-        let newWordArr: mainTxt={
-            word:newWord.toString(),
-            occurance:1
-        };
-        if (strExist.length>0){
-            if(strExist.some(exist => exist.word === newWord)){
-                let getIndex = strExist.findIndex(exist => exist.word === newWord);
-                strExist[getIndex].occurance++;
-            }else{
-                strExist.push(newWordArr);
-            }
-        }else{
-            strExist.push(newWordArr);
-        }
+  let strExist: mainTxt[] = [];
+
+  for (let i in strWords) {
+    let newWord = strWords[i];
+    let newWordArr: mainTxt = {
+      word: newWord.toString(),
+      occurance: 1
+    };
+    //check existed word in strExist
+    if (strExist.length > 0) {
+      if (strExist.some(exist => exist.word === newWord)) {
+        let getIndex = strExist.findIndex(exist => exist.word === newWord);
+        strExist[getIndex].occurance++;
+      } else {
+        strExist.push(newWordArr);
+      }
+    } else {
+      strExist.push(newWordArr);
     }
+  }
 
-    console.log("no error thanks");
-    return(strExist);
+  //sort list by word
+  if (str.sortResult == 'Word') {
+    if (str.sortOrder == 'Ascending') {
+      strExist = strExist.sort((a, b) => a.word.length - b.word.length);
+    } else {
+      strExist = strExist.sort((a, b) => b.word.length - a.word.length);
+    }
+  }else{
+  //sort list by count
+    if (str.sortOrder == 'Ascending') {
+      strExist = strExist.sort((a, b) => a.occurance - b.occurance);
+    } else {
+      strExist = strExist.sort((a, b) => b.occurance- a.occurance);
+    }
+  }
+
+  return (strExist);
 }
