@@ -38,9 +38,9 @@ export function countWordFx(str: parameter) {
   //sort list by word
   if (str.sortResult == 'Word') {
     if (str.sortOrder == 'Ascending') {
-      strExist = strExist.sort((a, b) => a.word.length - b.word.length);
+      strExist = strExist.sort((a, b) => a.word.localeCompare(b.word));
     } else {
-      strExist = strExist.sort((a, b) => b.word.length - a.word.length);
+      strExist = strExist.sort((a, b) => b.word.localeCompare(a.word));
     }
   }else{
   //sort list by count
