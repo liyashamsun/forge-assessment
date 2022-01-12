@@ -29,7 +29,7 @@ export default function Body() {
       {inputValue &&
         <Text>
         <Strong>Your input field :</Strong> {inputValue.txtInput} {'\n'}
-        <Strong>Sort Result by :</Strong> {inputValue.sortResult} {'\n'}
+        <Strong>Sort result by :</Strong> {inputValue.sortResult} {'\n'}
         <Strong>Sort order by :</Strong> {inputValue.sortOrder}
         </Text>
       }
