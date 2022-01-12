@@ -12,6 +12,7 @@ export default function Body() {
     //set value into table
     setFormState(strExist);
   }
+  
   return (
     <Fragment>
       <Form onSubmit={onSubmit}>

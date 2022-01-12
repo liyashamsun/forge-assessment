@@ -1,3 +1,4 @@
+
 interface parameter {
   txtInput: string;
   sortResult: string;
@@ -9,8 +10,8 @@ interface mainTxt {
   occurance: number;
 }
 
-
 export function countWordFx(str: parameter) {
+
   //get value from textarea and split by space
   let strWords = str.txtInput.split(" ");
 
@@ -22,6 +23,7 @@ export function countWordFx(str: parameter) {
       word: newWord.toString(),
       occurance: 1
     };
+
     //check existed word in strExist
     if (strExist.length > 0) {
       if (strExist.some(exist => exist.word === newWord)) {
@@ -43,6 +45,7 @@ export function countWordFx(str: parameter) {
       strExist = strExist.sort((a, b) => b.word.localeCompare(a.word));
     }
   }else{
+
   //sort list by count
     if (str.sortOrder == 'Ascending') {
       strExist = strExist.sort((a, b) => a.occurance - b.occurance);
